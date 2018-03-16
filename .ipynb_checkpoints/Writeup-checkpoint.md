@@ -135,7 +135,7 @@ fig.tight_layout()
 ```
 
 
-![png](./images/output_12_0.png)
+![png](./images/output_12_1.png)
 
 
 ### Discussion

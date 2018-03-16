@@ -22,7 +22,7 @@ Note: for those first two steps don't forget to normalize your features and rand
 
 ### Histogram of Oriented Gradients (HOG)
 
-Below is a display of the training images - Vehicle and Non Vehicle and corresponding HOG transformed values. Based on visual inspection on HOG transformation on various color spaces, I finally concluded that 'Y' channel of YUV color space showed better pattern compared to other channels/color spaces which yielded better result as well. 
+First step, I performed visual inspection on HOG transformation on various color spaces. After a complete analysis on all color spaces, I felt that 'Y' channel of YUV color space showed better pattern compared to other channels/color spaces. This inturn yielded better result as well. 
 
 After many trials, I narrowed down to the below combination of parameters which produced better accuracy.
 * orient = 9  # HOG orientations
@@ -32,7 +32,7 @@ After many trials, I narrowed down to the below combination of parameters which 
 * spatial_size = (16, 16) # Spatial binning dimensions
 * hist_bins = 9    # Number of histogram bins
 
-
+Below is a display of the training images - Vehicle and Non Vehicle and corresponding HOG transformed values. 
 
 ```python
 # Display Car Images
@@ -65,7 +65,8 @@ Later, I tried changing the Kernel to RBF and it helped improving the Test accur
 
 ### Sliding Window Search
 
-Based on the visual inspection of the video, I arrived at few assumptions. 
+Based on the visual inspection of the video, I arrived at few assumptions for this project (This is applicable only for this project video). 
+
 * Only lower half of the image need to be scanned and also the small bottom portion of the image can be skipped.
 * Left portion of the image can be skipped (NOTE: This is applicable only for the project video) inorder to reduce the scanning portion.
 * Far vehicles require smaller window size and closer vehicles require larger window size. 
@@ -90,7 +91,7 @@ plt.imshow(draw_boxes(draw_image, windows, color=(0, 255, 0), thick=6))
 
 ### Pipeline
 
-Following are the steps involved in the pipeline, given an image input.
+Pipeline defintion involves various steps involving feature extraction, derive prediction on each sliding window defined and conclude the vehicle location. Following are the steps involved in the pipeline, given an image input.
 
 * Transform the image into YUV color space.
 * Extract features - spatial, color and HOG corresponding to Y channel
@@ -135,7 +136,7 @@ fig.tight_layout()
 ```
 
 
-![png](./images/output_12_0.png)
+![png](./images/output_12_1.png)
 
 
 ### Discussion
